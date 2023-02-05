@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mongoose";
+import mongoose, { Schema, model, models } from "mongoose";
 
 const taskSchema = new Schema({
   title: {
@@ -16,7 +16,9 @@ const taskSchema = new Schema({
   }
 }, {
   timestamps: true,
-  versionKey: false
+  versionKey: false,
 })
+
+mongoose.set('strictQuery', true)
 
 export default models.Task || model('Task', taskSchema)
